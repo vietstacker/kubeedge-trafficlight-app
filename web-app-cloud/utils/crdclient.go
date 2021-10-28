@@ -22,6 +22,7 @@ func NewCRDClient(cfg *rest.Config) (*rest.RESTClient, error) {
 
 	// Config is the value the cfg pointer points to
 	config := *cfg
+	config.Insecure = true
 	config.APIPath = "/apis"
 	config.GroupVersion = &devices.SchemeGroupVersion
 	config.ContentType = runtime.ContentTypeJSON
@@ -39,7 +40,7 @@ func NewCRDClient(cfg *rest.Config) (*rest.RESTClient, error) {
 }
 
 func addDeviceCrds(scheme *runtime.Scheme) error {
-	// Add divice
+	// Add device
 	scheme.AddKnownTypes(devices.SchemeGroupVersion, &devices.Device{}, &devices.DeviceList{})
 	v1.AddToGroupVersion(scheme, devices.SchemeGroupVersion)
 	scheme.AddKnownTypes(devices.SchemeGroupVersion, &devices.DeviceModel{}, &devices.DeviceModelList{})
