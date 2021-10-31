@@ -38,7 +38,7 @@ func (light *Light) initDevice() {
 		case status := <-light.status:
 			if status == GREEN || status == YELLOW {
 				fmt.Println("A new goroutine is created")
-				light.runDevice(interrupt, status)
+				go light.runDevice(interrupt, status)
 			}
 			if status == RED {
 				interrupt <- struct{}{}
