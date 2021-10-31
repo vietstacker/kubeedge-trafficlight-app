@@ -20,8 +20,8 @@ func (light *Light) runDevice(interrupt chan struct{}, status int) {
 	for {
 		select {
 		case <-interrupt:
-			fmt.Println("Light is RED, stop moving")
 			light.handle(2)
+			fmt.Println("Light is RED, stop moving")
 			return
 		default:
 			light.handle(status)
@@ -37,7 +37,8 @@ func (light *Light) initDevice() {
 		select {
 		case status := <-light.status:
 			if status == GREEN || status == YELLOW {
-				go light.runDevice(interrupt, status)
+				fmt.Println("A new goroutine is created")
+				light.runDevice(interrupt, status)
 			}
 			if status == RED {
 				interrupt <- struct{}{}
