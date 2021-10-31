@@ -22,6 +22,7 @@ func (light *Light) runDevice(interrupt chan struct{}, status int) {
 		case <-interrupt:
 			fmt.Println("Light is RED, stop moving")
 			light.handle(2)
+			return
 		default:
 			light.handle(status)
 			fmt.Println("Light is: ", status, ", keep moving")
