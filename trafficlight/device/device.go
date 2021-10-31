@@ -2,6 +2,7 @@ package device
 
 import (
 	"fmt"
+	"time"
 )
 
 const (
@@ -25,7 +26,7 @@ func (light *Light) runDevice(interrupt chan struct{}, status int) {
 		default:
 			light.handle(status)
 			fmt.Println("Light is: ", status, ", keep moving")
-			//time.Sleep(1 * time.Second)
+			time.Sleep(1 * time.Second)
 		}
 	}
 }
@@ -35,7 +36,7 @@ func (light *Light) initDevice() {
 	for {
 		select {
 		case status := <-light.status:
-			if status == GREEN || status == YELLOW {
+			if status == GREEN {
 				go light.runDevice(interrupt, status)
 			}
 			if status == RED {
