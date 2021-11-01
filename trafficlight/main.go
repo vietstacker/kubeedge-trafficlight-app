@@ -120,17 +120,17 @@ func main() {
 
 		if cmd == "GREEN" && cmd != current_status {
 			ctr.KeepMoving()
-			fmt.Printf("Sending KEEP moving message.\n")
+			fmt.Printf("Sending KEEP moving message to channel.\n")
 		}
 
 		if cmd == "YELLOW" && cmd != current_status {
 			ctr.SlowMoving()
-			fmt.Printf("Sending SLOW moving message.\n")
+			fmt.Printf("Sending SLOW moving message to channel.\n")
 		}
 
 		if cmd == "RED" && cmd != current_status {
 			ctr.StopMoving()
-			fmt.Printf("Sending STOP moving message.\n")
+			fmt.Printf("Sending STOP moving message to channel.\n")
 		}
 
 		current_status = cmd
