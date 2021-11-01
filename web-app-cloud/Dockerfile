@@ -5,7 +5,6 @@ LABEL description="Kube edge traffic light simu"
 COPY kubeedge-lighttraffic-controller /kubeedge-lighttraffic-controller
 COPY static /static
 COPY views /views
-COPY images /images
 
 # Define default command
 ENTRYPOINT ["/kubeedge-lighttraffic-controller"]
