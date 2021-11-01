@@ -22,7 +22,6 @@ func NewCRDClient(cfg *rest.Config) (*rest.RESTClient, error) {
 
 	// Config is the value the cfg pointer points to
 	config := *cfg
-	config.Insecure = true
 	config.APIPath = "/apis"
 	config.GroupVersion = &devices.SchemeGroupVersion
 	config.ContentType = runtime.ContentTypeJSON
